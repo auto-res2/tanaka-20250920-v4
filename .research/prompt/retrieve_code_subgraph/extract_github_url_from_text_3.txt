@@ -1,0 +1,17 @@
+
+Input:
+# Task
+You carefully read the contents of the “Paper Outline” and select one GitHub link from the “GitHub URLs List” that you think is most relevant to the contents.
+# Constraints
+- Output the index number corresponding to the selected GitHub URL.
+- Be sure to select only one GitHub URL.
+- If there is no related GitHub link, output None.
+# Paper Outline
+ScaleGrad is a training-based method that operates by directly maneuvering the gradient information of the loss function. At each decoding step during training, it maintains a dynamic set of novel tokens (tokens not observed in the preceding ground-truth sequence). To encourage the model to use these novel tokens, ScaleGrad re-normalizes the softmax output probabilities over the vocabulary. A hyper-parameter, γ ∈ (0,1), controls the degree of emphasis on novel tokens. This re-scaling dynamically adjusts the gradient norms: for ground-truth novel tokens, the gradient norm is increased, prompting the model to assign higher probabilities; for non-ground-truth non-novel tokens, the gradient norm is also increased, pushing the model to assign much lower probabilities. This dynamic gradient scaling ensures the model learns to predict target tokens with varying strengths, promoting novelty without sacrificing correctness. The method is contrasted with Unlikelihood (UL) training, highlighting that ScaleGrad avoids potential issues where UL might decrease ground-truth token probabilities under certain conditions.
+
+# GitHub URLs List
+['https://github.com/shawnlimn/ScaleGrad']
+Output:
+{
+    "index": 0
+}
