@@ -3,5 +3,19 @@
   "queries": [
     "LLMファインチューニング 損失関数",
     "大規模言語モデル 新規 損失関数"
+  ],
+  "research_study_list": [
+    {
+      "title": "When Scaling Meets LLM Finetuning: The Effect of Data, Model and Finetuning Method"
+    },
+    {
+      "title": "Beyond Imitation: Leveraging Fine-grained Quality Signals for Alignment"
+    },
+    {
+      "title": "Language Generation with Strictly Proper Scoring Rules"
+    },
+    {
+      "title": "Straight to the Gradient: Learning to Use Novel Tokens for Neural Text Generation"
+    }
   ]
 }
