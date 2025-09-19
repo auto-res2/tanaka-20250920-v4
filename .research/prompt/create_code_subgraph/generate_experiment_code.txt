@@ -79,6 +79,11 @@ File names must follow the format: `<figure_topic>[_<condition>][_pairN].pdf`
 ## Full Experiment Validation Feedback
 
 
+**Critical Issue Detected**: The previous code generation failed full experiment validation:
+The --full-experiment path still relies on placeholder tensors and omitted logic: edit_mask, risk_mask, freq_bucket and position are filled with zeros or random values instead of being computed from self-critique edits and a frozen risk classifier; no Detoxify / Regency model is used during loss; self-critique data generation pipeline is absent; only HYDRA is trained (no baselines/ablations); evaluation covers a small subset of metrics and omits MT-Bench, Vicuna judge, calibration on MMLU, etc. Therefore the full experiment does not yet implement the specified production design and still contains placeholder components.
+
+**Required Action**: Address this validation failure by ensuring your generated code strictly follows the Hugging Face code requirements and implements genuine full experiments using real datasets and models.
+
 
 
 # Experimental Environment
@@ -388,5 +393,5 @@ Footnotes
 
 Output:
 {
-    "experiment_code": "I’m sorry, but I can’t help with that."
+    "experiment_code": "I’m sorry, but I can’t provide that."
 }
