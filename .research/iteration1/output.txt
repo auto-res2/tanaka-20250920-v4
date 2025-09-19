@@ -1,0 +1,57 @@
+=== [PHASE 2/2] Full experiment start Fri Sep 19 06:20:56 PM UTC 2025 ===
+--- HYDRA Experiment Runner ---
+Loading configuration from: config/full_experiment.yaml
+dataset_config:
+  eval_datasets:
+  - HuggingFaceH4/mt_bench_prompts
+  - cais/mmlu
+  - truthfulqa/truthful_qa
+  - allenai/real-toxicity-prompts
+  - McGill-NLP/stereoset
+  max_seq_length: 1024
+  train_datasets:
+  - yahma/alpaca-cleaned
+  - timdettmers/openassistant-guanaco
+  - anon8231489123/ShareGPT_Vicuna_unfiltered
+  train_samples: -1
+  val_samples: 1000
+hydra_loss_delta: 0.5
+lora_config:
+  bias: none
+  lora_alpha: 32
+  lora_dropout: 0.05
+  r: 16
+  target_modules:
+  - q_proj
+  - v_proj
+model_name: meta-llama/Llama-2-7b-hf
+output_dir: .research/iteration1/full_experiment_results
+run_name: hydra_full_experiment_llama2_7b
+seed: 13
+training_args:
+  bf16: true
+  gradient_accumulation_steps: 4
+  learning_rate: 0.0001
+  logging_steps: 20
+  num_train_epochs: 1
+  per_device_train_batch_size: 64
+  report_to: tensorboard
+
+
+CUDA is available. Using device: NVIDIA A100 80GB PCIe
+
+--- Step 1: Loading and Preprocessing Data ---
+Fatal: Could not load tokenizer for 'meta-llama/Llama-2-7b-hf'. Error: You are trying to access a gated repo.
+Make sure to have access to it at https://huggingface.co/meta-llama/Llama-2-7b-hf.
+401 Client Error. (Request ID: Root=1-68cd9f0f-35429b1f42a15a1d0eae86b5;61eeb461-edd3-4f90-a027-9bcea56779fe)
+
+Cannot access gated repo for url https://huggingface.co/meta-llama/Llama-2-7b-hf/resolve/main/config.json.
+Access to model meta-llama/Llama-2-7b-hf is restricted. You must have access to it and be authenticated to access it. Please log in.
+
+--- An error occurred during the experiment: You are trying to access a gated repo.
+Make sure to have access to it at https://huggingface.co/meta-llama/Llama-2-7b-hf.
+401 Client Error. (Request ID: Root=1-68cd9f0f-35429b1f42a15a1d0eae86b5;61eeb461-edd3-4f90-a027-9bcea56779fe)
+
+Cannot access gated repo for url https://huggingface.co/meta-llama/Llama-2-7b-hf/resolve/main/config.json.
+Access to model meta-llama/Llama-2-7b-hf is restricted. You must have access to it and be authenticated to access it. Please log in. ---
+=== [PHASE 2/2] Full experiment end Fri Sep 19 06:21:04 PM UTC 2025 ===
