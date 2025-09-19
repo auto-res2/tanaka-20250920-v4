@@ -1,0 +1,30 @@
+model_name: "meta-llama/Llama-2-7b-hf"
+output_dir: ".research/iteration1/full_experiment_results"
+run_name: "hydra_full_experiment_llama2_7b"
+seed: 13
+
+dataset_config:
+  train_datasets: ["yahma/alpaca-cleaned", "timdettmers/openassistant-guanaco", "anon8231489123/ShareGPT_Vicuna_unfiltered"]
+  eval_datasets: ["HuggingFaceH4/mt_bench_prompts", "cais/mmlu", "truthfulqa/truthful_qa", "allenai/real-toxicity-prompts", "McGill-NLP/stereoset"]
+  train_samples: -1 # Use all available samples
+  val_samples: 1000 # Use 1k for validation split
+  max_seq_length: 1024
+
+lora_config:
+  r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  target_modules: ["q_proj", "v_proj"]
+  bias: "none"
+
+training_args:
+  num_train_epochs: 1
+  per_device_train_batch_size: 64 # Effective batch size = 64 * 4 = 256
+  gradient_accumulation_steps: 4
+  learning_rate: 1.0e-4
+  bf16: true
+  logging_steps: 20
+  report_to: "tensorboard"
+  # No max_steps, will run for the full epoch
+
+hydra_loss_delta: 0.5
